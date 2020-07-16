@@ -26,7 +26,12 @@ let grid = [
 let rows = grid.length;
 let cols = grid[0].length;
 
-//shortway is to  use the shape of the data to figure out
+//solution 1
+//Use the shape of the data to figure out the days
+//by calculating the minimum total of each row, 
+//we then subtract tht minTotal from the number of columns
+//and the difference would equal the number of days it would take
+//to turn all 0s to 1s
 let result1 = daysToFullPower1(grid, cols);
 print(result1)
 // 5
@@ -42,8 +47,9 @@ function daysToFullPower1(grid, cols){
 }
 
 
-
-//Long way is to write a method that performs a nested loop to figure this out. On^2
+//Solution 2
+//Long way is to write a recursive method that performs multiple loops 
+//to figure out the outcome, Far more code and complex than the solution 1
 let result2 = daysToFullPower2(grid, rows, cols)
 print(result2);
 // 5
@@ -63,16 +69,13 @@ function daysToFullPower2(grid, rows, cols, days = 0){
             if( j === 0 && v[j] === 1 && v[j + 1] === 0){
                 grid[i][j + 1] = 1;
                 break;
-            }
-            else if (j === v.length - 1 && v[j - 1] === 0 && v[j] === 1){
+            } else if (j === v.length - 1 && v[j - 1] === 0 && v[j] === 1){
                 grid[i][j - 1] = 1;
                 break;
-            }
-            else if (v[j] === 1 && v[j + 1] === 0){
+            } else if (v[j] === 1 && v[j + 1] === 0){
                 grid[i][j + 1] = 1;;
                 break;
-            } 
-            else if (v[j] === 1 && v[j - 1] === 0){
+            } else if (v[j] === 1 && v[j - 1] === 0){
                 grid[i][j - 1] = 1;;
                 break;
             }
