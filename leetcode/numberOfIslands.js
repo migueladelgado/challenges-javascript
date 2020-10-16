@@ -12,8 +12,8 @@ const visitIsland = (grid, i, j) => {
         return
     if(j < 0 || j > grid[i].length - 1)
         return
-    // if(grid[i][j] === '0')
-    //     return
+    if(grid[i][j] === '0')
+        return
         
     grid[i][j] = '0';
     
